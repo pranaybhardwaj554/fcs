@@ -1,0 +1,20 @@
+{%  extends 'dashboard.html' %}
+{% block dashboard %}
+<h3 class="mb-3">Sales made by {{user}}</h3>
+<ol> 
+    {% for s in sale %}
+    <li> 
+        <article class="media content-section">
+          <div class="media-body">
+            <p class="article-content">  <strong>Client - </strong>{{ s.made_by }} </p>
+            <p class="article-content"> <strong>Date - </strong>{{s.made_on}}</p>
+            <p class="article-content">  <strong>Order ID  -</strong>{{ s.order_id }} </p>
+            <p class="article-content"><strong>Amount -  </strong>{{s.amount}} </p>
+            <!-- <a href="{{doc.document.url}}"  class=" text-justify "><h5>{{  doc.document.name}}</h5></a>
+            <a class="btn btn-outline-primary  btn-d "  href="{{ doc.document.url }}"  download type="submit"><i class="fa fa-download"></i></a> -->
+        </div>
+        </article>
+    </li>
+    {% endfor %}
+</ol>
+{% endblock dashboard %}

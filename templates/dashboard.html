@@ -1,0 +1,14 @@
+{%  extends 'template.html' %}
+{% block content %}
+    <div>
+        <nav class="nav justify-content-end">
+            <a class="nav-link " href="{% url 'dashboard' %}" aria-current="page" >{{ user.email }}</a>
+            <a class="nav-link " href="{% url 'profile' %}" aria-current="page" >Profile</a>
+            <a class="nav-link " href="{% url 'logout' %}" >Logout</a>
+        </nav>
+    </div>
+    <div style="max-width: 95%; width: 750px" class="mx-auto">
+    {%  block dashboard%}
+    {% endblock dashboard %}
+    </div>
+{% endblock content %}

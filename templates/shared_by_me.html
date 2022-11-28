@@ -1,0 +1,21 @@
+{%  extends 'dashboard.html' %}
+{% block content %}
+    <h3 class="mb-3">Documents uploaded by {{user}}</h3>
+<ol> 
+    {% for doc in files %}
+    <li> 
+        <article class="media content-section">
+          <div class="media-body">
+            <p class="article-content">Description - {{ doc.description }} </p>
+            <p class="article-content">Shared to - {{ doc.shared_to }} </p>
+            <p class="article-content">Document type - {{doc.doc_type}} </p>
+            <a href="{{doc.document.url}}"  class=" text-justify "><h5>{{  doc.document.name}}</h5></a>
+            <a class="btn btn-outline-primary  btn-d "  href="{{ doc.document.url }}"  download type="submit"><i class="fa fa-download"></i></a>
+            
+            <!-- <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' doc.document_id %}">Delete</a> -->
+        </div>
+        </article>
+    </li>
+    {% endfor %}
+</ol>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{%  extends 'dashboard.html' %}
+{% block content %}
+    <h3 class="mb-3">Documents uploaded with {{user}}</h3>
+<ol> 
+    {% for doc in shared %}
+    <li> 
+        <article class="media content-section">
+          <div class="media-body">
+            <p class="article-content">Description - {{ doc.description }} </p>
+            <p class="article-content">Document ID - {{doc.document_id}}</p>
+            <p class="article-content">Shared by - {{ doc.author }} </p>
+            <p class="article-content">Document type - {{doc.doc_type}} </p>
+            <a href="{{doc.document.url}}"  class=" text-justify "><h5>{{  doc.document.name}}</h5></a>
+            <a class="btn btn-outline-primary  btn-d "  href="{{ doc.document.url }}"  download type="submit"><i class="fa fa-download"></i></a>
+        </div>
+        </article>
+    </li>
+    {% endfor %}
+</ol>
+{% endblock content %}

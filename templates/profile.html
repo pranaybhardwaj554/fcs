@@ -1,0 +1,20 @@
+{%  extends 'dashboard.html' %}
+{% load widget_tweaks %}
+{%  block dashboard %}
+    <div>
+        <h2 style="margin-top:20px">Profile</h2>
+        <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                            {% render_field field class="form-control" %}
+                                {% for error in field.errors %}
+                                    <span style="color:red">{{ error }}</span>
+                                {% endfor %}
+                {% endfor %}
+        <input type="submit" value="Update" class="btn btn-block btn-primary">
+            </div>
+        </form>
+    </div>
+{%  endblock dashboard %}

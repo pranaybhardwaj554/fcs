@@ -1,0 +1,53 @@
+{%  extends 'dashboard.html' %}
+
+{% block dashboard %}
+    <form>
+        <div class="input-group mb-3">
+            <input name = "name" type="text" class="form-control" placeholder="Organisation's Name / Location/ Email" aria-label="Organisation's Name" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <div>
+        <h5>
+                3 - Hospitals
+                4 - Pharmacy
+                5 - Insurance Firms
+        </h5>
+    </div>
+
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        {% for org in queryset %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading-{{ forloop.counter }}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ forloop.counter }}" aria-expanded="false" aria-controls="flush-collapse-{{ forloop.counter }}">
+                        {{ org.name }}
+                    </button>
+                </h2>
+                <div id="flush-collapse-{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="flush-heading-{{ forloop.counter }}" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <ul>
+                        <li>
+                            Organisation Type - {{ org.org_type }}
+                        </li>
+                        <li>
+                            Organisation Name - {{ org.description }}
+                        </li>
+                            <li>
+                            Organisation Email - {{ org.user.email }}
+                        </li>
+                        <li>
+                            Organisation Location - {{ org.location }}
+                        </li>
+                        <li>
+                            Organisation Contact Details - {{ org.contactDetails }}
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+{% endblock dashboard%}

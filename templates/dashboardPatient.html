@@ -1,0 +1,40 @@
+{%  extends 'dashboard.html' %}
+{% block dashboard %}
+    <div>
+        <ul>
+            <li>
+                <a href="/dashboard/searchorg" aria-current="page" style="color: black">Search Organisations</a>
+            </li>
+            <li>
+                <a href="/dashboard/searchprofessional" aria-current="page" style="color: black">Search Health Care Professionals</a>
+            </li>
+            <li class="nav-item">
+              <a  href="/dashboard/upload" aria-current="page" style="color: black">Upload</a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard/user_posts" aria-current="page" style="color: black">Show/Delete Documents</a>
+            </li>
+            <li class="nav-item">
+                <a  href="/dashboard/share_docs" aria-current="page" style="color: black">Share Documents</a>
+              </li>
+              <li class="nav-item">
+                <a  href="/dashboard/shared_with_me" aria-current="page" style="color: black">Documents shared with you</a>
+              </li>
+              <li class="nav-item">
+                <a  href="/dashboard/shared_by_me" aria-current="page" style="color: black">Documents shared by you</a>
+              </li>
+              <li class="nav-item">
+                <a  href="/pay_patient" aria-current="page" style="color: black">Pay for Medicines</a>
+              </li>
+              <li class="nav-item">
+                <a  href="/dashboard/reuestp" aria-current="page" style="color: black">Raise Request for Medical Records From HealthCare Professional</a>
+              </li>
+              <li class="nav-item">
+                <a  href="/dashboard/reuesth" aria-current="page" style="color: black">Raise Request for Medical Records From Hospitals</a>
+              </li>
+              <li class="nav-item">
+                <a  href="/claim" aria-current="page" style="color: black">Raise Request for Claim</a>
+              </li>
+        </ul>
+    </div>
+{% endblock dashboard %}

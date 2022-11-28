@@ -1,0 +1,10 @@
+{%  extends 'dashboard.html' %}
+{% block dashboard %}
+<div>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Request for Claims</button>
+    </form>
+</div>
+{%endblock dashboard %}

@@ -1,0 +1,40 @@
+{%  extends 'dashboard.html' %}
+
+{% block dashboard %}
+    <div>
+        <form>
+        <div class="input-group mb-3">
+            <input name = "name" type="text" class="form-control" placeholder="Professional's Name / Location / Email" aria-label="Professional's Name" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+        {% for doc in queryset %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading-{{ forloop.counter }}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ forloop.counter }}" aria-expanded="false" aria-controls="flush-collapse-{{ forloop.counter }}">
+                        {{ doc.firstName }} {{ doc.lastName }}
+                    </button>
+                </h2>
+                <div id="flush-collapse-{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="flush-heading-{{ forloop.counter }}" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <ul>
+                        <li>
+                            Address - {{ doc.address }}
+                        </li>
+                            <li>
+                            Email - {{ doc.user.email }}
+                        </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+    </div>
+
+
+{% endblock dashboard%}

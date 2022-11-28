@@ -1,0 +1,28 @@
+{%  extends 'dashboard.html' %}
+{% block dashboard %}
+<div>
+    <h2>Pending Insurance Requests are -</h2>
+    <ol> 
+        {% for req in queryset %}
+        <li> 
+            <div class="card" style="width: 100%">
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Request Raised by Patient - {{ req.request_by.email }}</li>
+                <li class="list-group-item">Request ID - {{ req.request_id }}</li>
+                <li class="list-group-item">Bill - {{ req.document }}</li>
+                <a class="btn btn-outline-primary  btn-d "  href="{{ req.document.url }}"  download type="submit"><i class="fa fa-download"></i></a>
+                </ul>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type='hidden' value='{{ req.request_id }}' name='id'/>
+                    <input type="submit" class="btn" value='Pay' name='Pay' style = "color: blue;">
+                </form>
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+    </div>
+
+
+{% endblock dashboard %}

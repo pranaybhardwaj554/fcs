@@ -1,0 +1,20 @@
+{%  extends 'dashboard.html' %}
+{% block dashboard %}
+    <div>
+    <h2>Pending Requests are -</h2>
+        {% for req in queryset %}
+            <div class="card" style="width: 100%">
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Request Raised by Patient - {{ req.request_by.email }}</li>
+                <li class="list-group-item">Description - {{ req.description }}</li>
+                </ul>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type='hidden' value='{{ req.request_id }}' name='id'/>
+                    <input type="submit" class="btn" value='Delete' name='Delete'/>
+                </form>
+            </div>
+        {% endfor %}
+</div>
+    </div>
+{%  endblock dashboard %}

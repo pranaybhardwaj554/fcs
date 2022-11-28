@@ -1,0 +1,25 @@
+{%  extends 'dashboard.html' %}
+{% block dashboard %}
+<div> 
+    <ul>
+    <li class="nav-item">
+              <a  href="/dashboard/upload" aria-current="page" style="color: black">Upload</a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard/user_posts" aria-current="page" style="color: black">Show/Delete Documents</a>
+            </li>
+            <li class="nav-item">
+                <a  href="/dashboard/share_docs" aria-current="page" style="color: black">Share Documents</a>
+              </li>
+              <li class="nav-item">
+                <a  href="/dashboard/shared_with_me" aria-current="page" style="color: black">Documents shared with you</a>
+              </li>
+              <li class="nav-item">
+                <a  href="/dashboard/shared_by_me" aria-current="page" style="color: black">Documents shared by you</a>
+              </li>        
+              <li class="nav-item">
+                <a  href="/dashboard/requests" aria-current="page" style="color: black">Pending Requests</a>
+            </li>
+          </ul> 
+</div>
+{% endblock dashboard %}

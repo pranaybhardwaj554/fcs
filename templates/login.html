@@ -1,0 +1,22 @@
+{%  extends 'template.html' %}
+{% load widget_tweaks %}
+{%  block content %}
+    <div style="max-width: 95%; width: 750px" class="mx-auto">
+    <h2 style="margin-top:20px">Login</h2>
+    <div>
+        <form action="{% url 'login' %}" method="POST" novalidate>
+            {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                            {% render_field field class="form-control" %}
+                                {% for error in field.errors %}
+                                    <span style="color:#ff0000">{{ error }}</span>
+                                {% endfor %}
+                {% endfor %}
+        <input type="submit" value="Login" class="btn btn-block btn-primary" onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; ">
+            </div>
+        </form>
+    </div>
+    </div>
+{%  endblock content %}

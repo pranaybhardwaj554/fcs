@@ -1,0 +1,17 @@
+{%  extends 'template.html' %}
+{% block content %}
+
+    <div style="max-width: 95%; width: 750px" class="mx-auto">
+        <h2>Enter OTP</h2>
+        <p>Sent to:{{ email }}</p>
+        <p>OTP valid for only 2 mintues!</p>
+        <form class="form-inline" method="POST">
+            {% csrf_token %}
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword2" class="sr-only">OTP</label>
+                <input type = "password" readonly="true" class="use-keyboard-input"  style="position: relative; left: -2%; width: 300px;" name = "otp" method = "POST" class="form-control" id="inputPassword2" placeholder="Enter Otp">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </form>
+    </div>
+{% endblock content %}
