@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Payment to Patient (Insurance Claim) </title>
+</head>
+
+<body>
+    <h2>Payment to Patient (Insurance Claim)</h2>
+    {% if error %}
+    <h3>{{ error }}</h3>
+    {% endif %}
+    
+    <form method="post" >
+        {% csrf_token %}
+        <label for="username">Username: </label>
+        <input type="text" name="username" required>
+        <label for="password">Password: </label>
+        <input type="password" name="password" autocomplete="off" readonly onclick="this.removeAttribute('readonly');" required>
+        <label for="amount">Amount: </label>
+        <input type="number" name="amount" value="100" required>
+        <label for="Payment-purpose">Payed to: </label>
+        <select name="payment_to" id="payment_to" style = "min-width: 150px; ">
+            {% for x in mymembers %}
+            <option > {{ x }} </option>
+          {% endfor %}
+        </select>
+        <input type="submit" name="submit" value="Submit" required>
+    </form>
+    
+<!-- back to home page -->
+    <button type="submit" onclick="hrefFunction('../')">
+        Home
+   </button>
+
+</body>
+<script>
+    function hrefFunction(website){
+        window.location.href = website; 
+    }
+</script>
+</html>

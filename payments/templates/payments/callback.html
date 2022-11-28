@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+    <title>Callback</title>
+    <style>
+        .center {
+        position: absolute;
+        text-align: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        }
+     </style>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+<!--   
+
+    <h2>Callback Messsage: </h2>                    <br>
+    <h3> Checksum Verification: {{ message }} </h3> <br>
+    MID: {{ MID }}                                  <br>
+    TXNID: {{ TXNID }}                              <br>
+    ORDERID: {{ ORDERID }}                          <br>
+    BANKTXNID: {{ BANKTXNID }}                      <br>
+    TXNAMOUNT: {{ TXNAMOUNT }}                      <br>
+    CURRENCY: {{ CURRENCY }}                        <br>
+    <h3> STATUS: {{ STATUS }} </h3>                 <br>
+    RESPCODE: {{ RESPCODE }}                        <br>
+    RESPMSG: {{ RESPMSG }}                          <br>
+    TXNDATE: {{ TXNDATE }}                          <br>
+    GATEWAYNAME: {{ GATEWAYNAME }}                  <br>
+    BANKNAME: {{ BANKNAME }}                        <br>
+    BIN_NAME: {{ BIN_NAME }}                        <br>
+    PAYMENTMODE: {{ PAYMENTMODE }}                  <br>
+    CHECKSUMHASH: {{ CHECKSUMHASH }}
+    <h3> STATUS: {{ STATUS.0 }} </h3> -->
+    {% if STATUS.0 == 'TXN_SUCCESS' %}
+    <div>
+      <h3>
+         Payment was successful!<i class="fas fa-check-circle"></i>
+      </h3>
+      <br> 
+      <form id = "bill">
+        <h3> <label> BILL DETAILS </label></h3>
+        <label><strong> Payment By : </strong>{{CUST_ID}} </label> <br> 
+        <label><strong>  Payment To: </strong>{{PAYED_TO}} </label> <br> 
+        <label><strong>  Merchant ID : </strong>{{MID}} </label> <br> 
+        <label><strong>  Order ID : </strong>{{ ORDERID }}   </label><br> 
+        <label><strong>  Amount : </strong>{{ TXNAMOUNT }}   </label><br> 
+        <label><strong>  Currency : </strong>{{ CURRENCY }}  </label><br> 
+        <label><strong>  Date : </strong>{{ TXNDATE }}      </label> <br> 
+        <label><strong> Bank Name : </strong>{{ BANKNAME }}    </label><br> 
+        <label><strong> Payment Mode : </strong>{{ PAYMENTMODE }}  </label><br> 
+     </form>
+     <br> 
+     <button type="submit" onclick="GeneratePdf()" style = "min-width : 150px; min-height: 25px;">
+      Generate Bill 
+      </button>
+      <h5>
+         <a href="http://127.0.0.1:8000/">
+            <button class="Home" style="min-width : 150px; min-height: 25px;"> 
+                HomePage 
+           </button>
+         </a>
+       
+      </h5>
+   </div>
+
+  
+
+    {% else %}
+        <div class="center">
+            <h3>
+               Payment failed!<i class="fas fa-check-circle"></i>
+            </h3>
+            <h5>
+               <a href="http://127.0.0.1:8000/">
+               Home
+               </a>
+            </h5>
+            <!-- <h5>
+              <a href="/pay">
+              Try Again
+              </a>
+           </h5> -->
+         </div>
+    {% endif %}
+</body>
+<script>
+      function GeneratePdf() {
+         const options = {
+         margin: 1,
+         filename: "Bill.pdf",
+         image: { type: "jpeg", quality: 1 },
+         html2canvas: { scale: 2 },
+         jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+      }; 
+            var element = document.getElementById('bill');
+            var exporter = new html2pdf(element, options);
+            // download the pdf
+            exporter.getPdf(true).then((pdf) => { console.log('pdf downloaded!', pdf); });
+        }
+</script>
+</html>
